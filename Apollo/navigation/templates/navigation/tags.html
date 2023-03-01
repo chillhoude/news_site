@@ -1,0 +1,24 @@
+{% extends 'navigation/sample.html' %}
+
+{% block title %} {{tag}} {% endblock %}
+{% block content %}
+<div id="tags_center">
+    <div id="tag_post">
+        <p>Публікації на тему: {{tag}}</p>
+    </div>
+</div>
+
+
+
+
+<div class="allnews">
+    {%for el in alltag %}
+    <a href="/{{el.blog_id}}" style="text-decoration:none;">
+        <div id="filter">
+            <tl>{{el.blog.blog_title}}</tl>
+        </div>
+    </a>
+    {%endfor%}
+</div>
+
+{% endblock %}

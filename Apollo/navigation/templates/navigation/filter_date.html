@@ -1,0 +1,33 @@
+{% extends 'navigation/sample.html' %}
+
+{%block title%} {{ dataFilter }} {% endblock %}
+
+{% block content %}
+<div id="btn_slide">
+    <div id="time_post">
+        <p>Публікації за: {{ dataFilter}}</p>
+        <li><a href=""><i  class="far fa-calendar-alt fa-2x"></i></a>
+            <form action="{% url 'filter'  %}" method="get">
+                {% csrf_token %}
+                <ul1>
+                {% for el in DataBaseNW %}
+                    <input type="submit" name="filter" class="btn-select" value="{{ el|date:'Y-m-d' }}">
+                {% endfor %}
+                </ul1>
+            </form>
+
+        </li>
+    </div>
+</div>
+<div class="allnews">
+    {% for el in Date %}
+    <a href="{{ el.id }}"style="text-decoration:none;">
+        <div id="filter">
+             <tm1>{{ el.date_public|date:'d/m/Y' }} </tm1>  <tl> &nbsp {{ el.blog_title }}</tl>
+             <tm2>{{ el.date_public|date:'H:m' }} </tm2>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{%endblock%}

@@ -1,0 +1,17 @@
+{% extends 'navigation/sample.html' %}
+{%block title%} Создание записи{%endblock%}
+{% block content %}
+<form style="margin-top:15px" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{post_form.as_p}}<br>
+    <p>Тип публикации:<select name="type">
+        <option disabled>Выберите тип публикации:</option>
+        <option selected value="Блог">Блог</option>
+        <option value="Публикация">Публикация</option>
+        <option value="Интервью">Интервью</option>
+    </select><br></p>
+    {{post_form.media}}
+    {{hashtag_form.as_p}}
+    <input type="submit" value="Опубликовать">
+</form>
+{% endblock %}

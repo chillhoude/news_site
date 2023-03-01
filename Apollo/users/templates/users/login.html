@@ -1,0 +1,12 @@
+{% extends 'navigation/sample.html' %}
+
+{%block title%} Войдите на сайт{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-primary btn-sm">Войти</button>
+</form>
+Не зарегистрированы? <a href="{% url 'register' %}">Регистрация</a>
+{% endblock %}

@@ -1,0 +1,125 @@
+.main_screen{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+.content_post{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+}
+.title{
+    background:rgb(206, 212, 218);
+    position:relative;
+    display: flex;
+    flex-direction: column;
+}
+.img-main{
+    width:50%;
+    height:20%;
+    z-index:1;
+    position:relative;
+    left:25%;
+}
+.text{
+    position:relative;
+    top:0%;
+    left:10%;
+    z-index:2;
+    width:80%;
+    word-wrap:break-word;
+}
+.text p{
+    text-align:center;
+    color:black;
+    font-size:28px;
+    font-weight:bold;
+}
+.container{
+    position:relative;
+}
+.tagname{
+    position: static;
+}
+.fulltext{
+    position:relative;
+    top:40px;
+    width:80%;
+    left:8%;
+}
+.fulltext p{
+    color:black;
+}
+.container h{
+    font-size:20px;
+}
+#tags{
+    position:relative;
+    font-size:18px;
+    display:flex;
+    align-items:center;
+}
+.btn-tag {
+    border: 0px solid #000;
+    margin-left: 10px;
+    background:#ced4da;
+    z-index:0;
+    transition: 0.35s;
+}
+.btn-tag:hover {
+    background-color:#0dcaf0;
+}
+.comment{
+    position: relative;
+    top: 90px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.comment_form{
+    position: relative;
+}
+.comment_form input{
+    margin-bottom: 15px;
+}
+.comment commentarie{
+    font-size: 26px;
+    font-weight: bold;
+}
+#comment_view{
+    background-color:rgb(249, 217, 152);
+    width: 100%;
+    height: auto;
+    display:flex;
+    position: relative;
+}
+#comment_view img{
+    width: 100px;
+    height: 100px;
+}
+.nickname{
+    font-size:16px;
+    position: relative;
+}
+#comment_view .date{
+    position: absolute;
+    right: 5px;
+    bottom: -5px;
+}
+.user{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#comment_view p{
+    word-break: break-word;
+}
+
+@media screen and (max-width:1100px) {
+    
+}
+@media screen and (max-width:430px) {
+    
+}

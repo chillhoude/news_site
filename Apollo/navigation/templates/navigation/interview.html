@@ -1,0 +1,14 @@
+{% extends 'navigation/sample.html' %}
+
+{%block title%} Интервью {% endblock %}
+
+{% block content %}
+{% for el in interview %}
+    <a href="{{ el.id }}">
+        <div class="news-light">
+            <img src="{{ el.img.url }}">
+            <p>{{el.blog_title}}</p>
+        </div>
+    </a>
+{% endfor %}
+{%endblock%}

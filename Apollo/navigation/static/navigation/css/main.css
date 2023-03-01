@@ -1,0 +1,70 @@
+.title_sample{
+    position: relative;
+}
+.login_img{
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.login_img a{
+    text-decoration:none;
+}
+.logo{
+    position: relative;
+    text-decoration: none;
+    display: center;
+    left: 45%;
+}
+.login_img svg{
+    position:relative;
+    top:3%;
+    color:black;
+    left:-15%
+}
+h1{
+    text-decoration:none;
+    color: #000000;
+    font-size: 42px;
+    font-family: "Impact";
+}
+.navigation{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn{
+    text-decoration:none;
+    color: #000000;
+    font-family: "Franklin Gothic Demi";
+    font-size: 19px;
+    font-weight: bold;
+    position: relative;
+    margin: 10px;
+    border:0px solid;
+}
+.btn-nav::after, .btn-nav::before{
+    border: 2px solid #000;
+    margin:3px;
+    content: "";
+    position: absolute;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: transform 0.3s ease;
+}
+.btn-nav:hover:after{
+    transform: translate(-5px, -5px);
+}
+.btn-nav:hover:before{
+    transform: translate(5px, 5px);
+}
+
+@media screen and (max-width:430px) {
+.navigation{
+    
+}
+}

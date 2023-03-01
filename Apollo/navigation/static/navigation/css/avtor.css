@@ -1,0 +1,55 @@
+.avtor-title{
+    position: relative;
+    display:flex;
+    background:#ced4da;
+    width:100%;
+    height: 250px;
+}
+.image-avatar{
+    position:relative;
+    width:160px;
+    height:160px;
+    clip-path: circle(50%);
+    margin-left:30px;
+    display:flex;
+    align-items:center;
+}
+.items-avtor{
+    position:relative;
+    top:-20px;
+    display:flex;
+    align-items:center;
+}
+.image-avatar img{
+    position:relative;
+    left:-37px;
+}
+.avtor-name{
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    margin-left:10px;
+}
+sh{
+    font-size:12px;
+
+}
+.avtor-name h{
+    font-weight:bold;
+    font-size:18px;
+    position:relative;
+    left:8px;
+}
+.avtor-name pa{
+    font-size:15px;
+    font-weight:italy;
+}
+.avtor-info{
+    font-size:15px;
+    position:absolute;
+    left:12%;
+    top:83%;
+    display:flex;
+    flex-direction:column;
+    font-family: "fira sans",sans-serif;
+}

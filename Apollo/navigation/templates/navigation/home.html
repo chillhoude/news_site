@@ -1,0 +1,29 @@
+{% extends 'navigation/sample.html' %}
+{%block title%} Главная {% endblock %}
+
+{% block content %}
+<div class ="content">
+    <p1>Свежие новости:</p1>
+    <div class="slider">
+                {% for el in Shield %}
+                <a href="{{ el.id }}">
+                    <div class="news">
+                        <img src="{{ el.img.url }}">
+                        <p>{{el.blog_title}}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            <a href="{% url 'news' %}" id="go-news" ><i class="fas fa-arrow-right fa-4x"> </i></a>
+    </div>
+</div>
+<div class="section_layout">
+    {% for el in DataBase %}
+    <a href="{{ el.id }}">
+            <div class="section_news">
+                <img src="{{el.img.url}}">
+                <p>{{el.title}}</p>
+            </div>
+    </a>
+    {% endfor %}
+</div>
+{%endblock%}

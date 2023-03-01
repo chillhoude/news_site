@@ -1,0 +1,67 @@
+.user_information{
+    background-color: #ced4da;
+    display:flex;
+    margin: 15px;
+    position: relative;
+}
+.user_information img{
+    width: 125px;
+    height: 125px;
+}
+.user_information p{
+    position: absolute;
+    bottom: -5px;
+    right: 10px;
+}
+.user_form_about{
+    padding:25px;
+    display: flex;
+    position: relative;
+}
+.user_form_about input{
+    margin-top: 15px;
+}
+.navigation_cabinet{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navigation_cabinet p{
+    font-size: 18px;
+    color:black;
+    font-weight: bold;
+    font-family: "Franklin Gothic Demi";
+}
+.navigation_cabinet a{
+    text-decoration: none;
+    margin-left: 18px;
+    background-image: linear-gradient(black, black);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+.navigation_cabinet a:hover{
+    background-size: 100% 2px;
+}
+.information{
+    display: flex;
+    width: 1350px;
+    justify-content: center;
+    align-items: center;
+}
+.tabs{
+    display: none;
+}
+.navigation_cabinet a::before{
+    background-image: linear-gradient(black, black);
+    background-position: 0% 100%;
+    background-size: 100%;
+}
+.user_comment{
+    position:relative;
+    width: 80%;
+}
+.tabs:target{
+    display: block;
+}

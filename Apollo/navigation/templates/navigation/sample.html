@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'navigation/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'navigation/css/cabinet.css' %}">
+    <link rel="stylesheet" href="{% static 'navigation/css/avtor.css' %}">
+    <link rel="stylesheet" href="{% static 'navigation/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'navigation/css/news.css' %}">
+    <link rel="stylesheet" href="{% static 'navigation/css/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'navigation/css/post.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <title>News ·{% block title%}{%endblock%}</title>
+</head>
+<body>
+   
+<div class="title_sample">
+    <div class="login_img">
+        <a href="{% url 'home'%}" class = "logo"><h1>//News</h1></a>
+        <a {%if request.user.is_authenticated %} href="/user/cabinet/#user_about"
+            {% else %}  href="{% url 'login' %} "{% endif %}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg>
+        </a>
+    </div>
+</div>
+    
+<div class="navigation">
+    <a href="{% url 'home' %}" class="btn btn-nav">Главная</a>
+    <a href="{% url 'news' %}" class="btn btn-nav">Новости</a>
+    <a href="{% url 'public' %}" class="btn btn-nav">Публикации</a>
+    <a href="{% url 'blog' %}" class="btn btn-nav">Блог</a>
+    <a href="{% url 'interview' %}" class="btn btn-nav">Интервью</a>
+    {%if request.user.is_journalist %}
+        <a href="{% url 'create_post' %}" class="btn btn-nav">Создать новость</a>
+    {% endif %}
+</div>
+    <main>
+        {% if messages %}
+
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+            <div  class="alert alert-danger" role="alert">
+                <p1>{{ message }}</p1>
+            </div>
+            {% else %}
+            <div  class="alert alert-{{message.tags}}" role="alert">
+                <p1>{{ message }}</p1>
+            </div>
+            {% endif%}
+        {%endfor%}
+
+        {% endif%}
+
+        {% block content %}
+
+        {% endblock %}
+    </main>
+    
+</body>
+</html>

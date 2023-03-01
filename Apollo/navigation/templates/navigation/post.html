@@ -1,0 +1,91 @@
+{% extends 'navigation/sample.html' %}
+
+{% block title %} {{newsDB.title}}{% endblock %}
+{% block content %}
+<div class="main_screen">
+    <ul3 class="left_block">
+
+    </ul3>
+    <ul2 class="content_post">
+        <div class="title">
+            <div class="text">
+                <p id="title">{{ BlogDB.blog_title }}</p>
+            </div>
+            <img src="/media/blog/{{ BlogDB.img }}" class="img-main">
+        </div>
+        <div class="container">
+            <div class="fulltext">
+                <p>{{BlogDB.date_public }}, {{BlogDB.author}} </p>
+                <h id="full_text">{{ BlogDB.full_text| safe }}</h>
+                <div style="display: flex; align-items:center;margin-bottom:10px;position: relative;">
+                    <form method="post" action="{% url 'like' BlogDB.pk %}">
+                        {% csrf_token %}
+                        <div style="position:relative">
+                            <input type="hidden" name="text" value="{{ request.path }}">
+                            <button style="background: transparent; border: none; box-shadow: none;" type="submit">
+                                <img style="width:25px;position:relative;top:-2px;" src="/media/source/like.png" alt="">
+                                <span style="position:absolute ; top:3px;margin-left:3px">{{ BlogDB.like.all.count }}</span>
+                            </button>
+                        </div>
+                    
+                    </form>
+                     <form method="post" action="{% url 'dislike' BlogDB.pk %}">
+                        {% csrf_token %}
+                        <div style="position:absolute; top:5px; margin-left: 10px;">
+                            <input type="hidden" name="text" value="{{ request.path }}"> 
+                            <button style="background: transparent; border: none; box-shadow: none;" type="submit">
+                                <img style="width:25px" src="/media/source/dislike.png" alt="">    
+                                <span style="position:absolute ; top:-1px;margin-left:3px">{{ BlogDB.dislike.all.count }}</span>
+                            </button>
+                        </div>
+                     </form>
+                </div>
+                
+                <div class="tagname">
+                    <g id="tags"><b>Теги:</b>
+                        <form action="{% url 'tag'  %}" method="get">
+                            {% for hashtag in hashtags_list %}
+                            <input type="submit" name="tag" class="btn-tag" value="{{ hashtag.hashtag }}">
+                            {% endfor %}
+                        </form>
+                    </g>
+                </div>
+                
+            </div>
+            <div class="comment">
+                <commentarie>Коментарии:</commentarie>
+                {%if request.user.is_authenticated%}
+                <form class="comment_form" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input  type="submit" value="Отправить">
+                </form>
+                {%endif%}
+                {% for comment in comment_list%}
+                <ul id="comment_view">
+                    <div class="user">
+                        <img src="/media/avatar/{{comment.user.avatar}}" alt="">
+                        <p class="nickname">{{comment.user}}</p>
+                    </div>
+                    <p>{{comment.comment}}</p3>
+                    <p2 class="date">{{comment.date_time}}</p>
+                        <form method="post" action="{% url 'likecomment' comment.pk %}">
+                            {% csrf_token %}
+                            <div style="position:absolute;left:130px;bottom:0px;display:flex;justify-content:center ;" >
+                                <input type="hidden" name="text" value="{{ request.path }}">
+                                <button style="background: transparent; border: none; box-shadow: none;" type="submit">
+                                    <img style="width:25px;height: 25px;" src="/media/source/like.png" alt="">
+                                    <span style="position:relative; top:4px">{{ comment.like.all.count }}</span>
+                                </button>
+                            </div>
+                </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </ul2>
+    <ul3 class="right_block">
+
+    </ul3>
+</div> 
+
+{% endblock %}

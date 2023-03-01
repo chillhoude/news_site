@@ -1,0 +1,48 @@
+{% extends 'navigation/sample.html' %}
+
+{%block title%} Кабинет {% endblock %}
+
+{% block content %}
+<div class="user_information">
+    <div class="user">
+        <img src="/media/avatar/{{user.avatar}}" alt="">
+        {{request.user.username}}
+    </div>
+    <p>{{ user.date_joined }}</p>
+
+</div>
+<div class="navigation_cabinet">
+    <a href="#user_about" ><p>Информация о вас</p></a>
+    <a href="#comment" ><p>Ваши коментарии</p></a>
+    {% if request.user.is_jurnalist %}<p>Ваши статьи</p>{%endif%}
+</div>
+<div class="information">
+    <div id="user_about" class="user_form_about tabs">
+        <form method="post" >
+            {% csrf_token %}
+            Ваше имя: <input type="text" name="first_name"{% if MainUser.first_name != None %} value="{{MainUser.first_name}}" {%else%} value=""  {%endif%}></br>
+            Ваша фамилия: <input type="text" name="last_name"{% if MainUser.last_name != None %} value="{{MainUser.last_name}}" {%else%} value="" {%endif%}></br>
+            Ваша почта: <input type="text" name="email"{% if MainUser.email != None %} value="{{MainUser.email}}" {%else%} value=""  {%endif%}></br>
+            {% if request.user.is_staff %}
+            {% for el in users %}
+            {{el}} <input type="checkbox" {% if el.is_journalist == True %} checked {% else %} None {% endif %} name="{{el.username}}">Статус журналиста</br>
+            {% endfor %}
+            {%endif%}
+            <input type="submit" value="Подтвердить"><br>
+            <a href="{% url 'logout' %}">Выйти</a>
+        </form>
+    </div>
+    <div id="comment" class="user_comment tabs">
+        {%for comment in comments%}
+            <ul id="comment_view">
+                <div class="user">
+                    <img src="/media/avatar/{{comment.user.avatar}}" alt="">
+                    <p class="nickname">{{comment.user}}</p>
+                </div>
+                <p>{{comment.comment}}</p3>
+                <p2 class="date">{{comment.date_time}}</p>
+            </ul>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
