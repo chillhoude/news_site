@@ -46,7 +46,7 @@
 }
 .information{
     display: flex;
-    width: 1350px;
+    width: 100%;
     justify-content: center;
     align-items: center;
 }
@@ -60,7 +60,8 @@
 }
 .user_comment{
     position:relative;
-    width: 80%;
+    width: 75%;
+    
 }
 .tabs:target{
     display: block;

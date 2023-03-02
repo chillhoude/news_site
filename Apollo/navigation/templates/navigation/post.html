@@ -15,7 +15,7 @@
         </div>
         <div class="container">
             <div class="fulltext">
-                <p>{{BlogDB.date_public }}, {{BlogDB.author}} </p>
+                <p>{{BlogDB.date_public }}, <a href="{% url 'user' BlogDB.author.id  %}">{{BlogDB.author}} </a></p>
                 <h id="full_text">{{ BlogDB.full_text| safe }}</h>
                 <div style="display: flex; align-items:center;margin-bottom:10px;position: relative;">
                     <form method="post" action="{% url 'like' BlogDB.pk %}">
@@ -65,7 +65,7 @@
                 <ul id="comment_view">
                     <div class="user">
                         <img src="/media/avatar/{{comment.user.avatar}}" alt="">
-                        <p class="nickname">{{comment.user}}</p>
+                        <a href="{% url 'user' comment.user.id  %}"><p class="nickname">{{comment.user}}</p></a>
                     </div>
                     <p>{{comment.comment}}</p3>
                     <p2 class="date">{{comment.date_time}}</p>
