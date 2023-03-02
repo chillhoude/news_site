@@ -18,14 +18,6 @@ class Blog(models.Model):
     def __str__(self):
         return str(self.blog_title)
 
-class Comment_user(models.Model):
-    user = models.ForeignKey(CustomUser,on_delete=models.PROTECT,null=True)
-    comment = models.CharField(max_length = 250,
-                            null = True)
-    date_time = models.DateTimeField(null=True)
-    like = models.ManyToManyField(CustomUser,blank=True,related_name='Likes')
-    post = models.ForeignKey(Blog,on_delete=models.PROTECT,null=True)
-
 class BlogHeshtags(models.Model):
     blog = models.ForeignKey(Blog,
                              default=None,
@@ -36,3 +28,13 @@ class BlogHeshtags(models.Model):
                              null='Без темы')
     def __str__(self):
         return str(self.hashtag)
+
+
+class Comment_user(models.Model):
+    user = models.ForeignKey(CustomUser,on_delete=models.PROTECT,null=True)
+    comment = models.CharField(max_length = 250,
+                            null = True)
+    date_time = models.DateTimeField(null=True)
+    like = models.ManyToManyField(CustomUser,blank=True,related_name='Likes')
+    post = models.ForeignKey(Blog,on_delete=models.PROTECT,null=True)
+
